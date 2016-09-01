@@ -39,22 +39,14 @@ Finally our filter will look like this:
 Click "Save" and be ready to receive notifications!
 
 ##### 3. Invoices and payments
-To allow user to pay invoice, you need to create a link with a special custom protocol - EToken URI scheme. The purpose of this URI scheme is to enable users to easily make payments by simply clicking links on webpages or scanning QR Codes.  
-It has such format:
-```
-web+[PROTOCOL_NAME]:[YOUR_ADDRESS]?amount=[AMOUNT]&reference=[INVOICE_ID]  
-```
+In order to make a payment, user should know the next information:  
+- **YOUR_ADDRESS** is your wallet address;  
+- **AMOUNT** is the price in the chosen currency to be paid;  
+- **INVOICE_ID** is the unique ID of invoice at your choice, e.g. from database.
 
-Here **PROTOCOL_NAME** is the name of protocol, which you can ask owner of currency. In our case, it is "cryptocarbon".  
-**YOUR_ADDRESS** is your wallet address.  
-**AMOUNT** is the price and **INVOICE_ID** is the unique ID of invoice at your choice, e.g. from database.  
-For example, if user wants to buy iPhone for 42 CryptoCarbon, link with EToken URI will look like this:  
-```html
-<a href="web+cryptocarbon:0xfab8b376b3acc29b58b81296ffe7981164b764b9?amount=42&reference=AA-0123456789">Pay With CC</a>
-```
-When user clicks on link, he will be redirected to his webwallet with filled form to pay your invoice.
-
->Pay attention that user may not have this protocol installed at his browser. For this reason we recommend to show address, amount and invoice ID in text format as well. E.g. “Payment instructions: please send [AMOUNT] CC to address [YOUR_ADDRESS] and specify this invoice: [INVOICE_ID] as a comment to your transaction".
+Example:
+User submits the payment request and selects CryptoCarbon as a payment method. The confirmation page says:  
+"Payment instructions: please send **[AMOUNT]** CC to address **[YOUR_ADDRESS]** and specify this invoice: **[INVOICE_ID]** as a comment to your transaction".
 
 ##### 4. Handle notifications
 Notification Service will send notifications to your endpoints on each successful user payment according to your filters information.
